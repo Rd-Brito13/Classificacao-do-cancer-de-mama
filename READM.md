@@ -14,13 +14,21 @@ Desenvolver um modelo preditivo capaz de identificar se uma paciente apresenta *
 ## Estrutura do repositório
 
 Classificacao-do-cancer-de-mama/
+
 ├─ data/
+
 │ ├─ raw/ <- dados_cancer.csv
+
 │ └─ processed/ <- dados_cancer_tratado.csv
+
 ├─ notebooks/
+
 │ └─ Classificador.ipynb <- Análise, tratamento e modelagem
+
 ├─ models/ <- MLP.pkl, Regressão Logistica.pkl, SVM.pkl
+
 ├─ requirements.txt <- Dependências do projeto
+
 └─ README.md <- Documentação do projeto
 
 ---
