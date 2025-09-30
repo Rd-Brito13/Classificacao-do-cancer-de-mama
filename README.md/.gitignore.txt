@@ -1,7 +1,0 @@
-README.md
-notebooks
-data
-models
-requirements
-processed
-raw
