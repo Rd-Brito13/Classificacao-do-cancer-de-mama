@@ -105,3 +105,15 @@ Kernel -> Change Kernel -> Python (Cancer-ML)
 
 4. Execute o notebook
 -Abra o notebook notebooks/Classificador.ipynb no Jupyter Notebook
+```
+
+---
+## 👨‍💻 Autor
+
+**Rodrigo Brito**  
+📧 [rd.brito13@gmail.com](mailto:rd.brito13@gmail.com)  
+💼 [LinkedIn](https://www.linkedin.com/in/rd-brito13)
+
+---
+
+⭐ **Se este projeto foi útil, não esqueça de deixar uma estrela no repositório!**
