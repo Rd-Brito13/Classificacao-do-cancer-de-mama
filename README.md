@@ -38,6 +38,7 @@ Classificacao-do-cancer-de-mama/
 
 ├─ Setup.bat <- Script de configuração automática do ambiente
 │
+
 └─ README.md <- Documentação do projeto
 
 ---
