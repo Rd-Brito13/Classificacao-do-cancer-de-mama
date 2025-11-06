@@ -1,11 +1,27 @@
-pandas
-numpy
-matplotlib
-seaborn
-plotly
-scipy
-scikit-learn
-xgboost
-lightgbm
-catboost
-joblib
+# Núcleo científico e manipulação de dados
+numpy==2.3.4
+pandas==2.3.3
+scipy==1.16.3
+
+# Visualização e gráficos interativos
+matplotlib==3.10.7
+seaborn==0.13.2
+plotly==6.4.0
+
+# Machine Learning clássico e pipelines
+scikit-learn==1.7.2
+joblib==1.5.2
+
+# Modelos de boosting
+xgboost==3.1.1
+lightgbm==4.6.0
+catboost==1.2.8
+
+# Suporte a notebooks Jupyter
+ipykernel==7.1.0
+nbformat==5.10.4
+jupyterlab_widgets==3.0.16
+widgetsnbextension==4.0.15
+
+# Utilidades e avisos
+colorama==0.4.6
