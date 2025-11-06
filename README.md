@@ -28,13 +28,13 @@ Classificacao-do-cancer-de-mama/
 
 ├─ notebooks/
 
-│  └─ Classificador.ipynb <- <- Análise, tratamento e modelagem dos dados
+│  └─ Classificador.ipynb <- Análise, tratamento e modelagem dos dados
 
 ├─ models/ <- Modelos treinados (MLP.pkl, SVM.pkl, LG.pkl)
 
-├─ requirements/ <- Dependências do projeto
+├─ requirements/ 
 
-│ └─ requirements.txt
+│ └─ requirements.txt <- Dependências do projeto
 
 ├─ Setup.bat <- Script de configuração automática do ambiente
 │
@@ -75,6 +75,7 @@ Modelos testados:
 - Multi-Layer Perceptron (MLPClassifier)  
 - Support Vector Machine (SVC)  
 
+
 ### Otimização e Validação
 - Ajuste de hiperparâmetros utilizando: `GridSearchCV - RandomizedSearchCV`, a busca foi otimizada utilizando a variavel `recall_maligno`, visando trazer o melhor recall para o falso negativo (malignos classificados como benignos)
 - Validação cruzada (`cross_validate - kfold`)  
@@ -85,7 +86,8 @@ Modelos testados:
   - **F1-Score Médio (Falso Negativo)**
   - **ROC-AUC Global**
   - **Matriz de Confusão Interativa (Plotly)**
-  - 
+
+  
 ### Simulação de deploy
 
 A simulação de deploy foi planejada para testar a aplicação prática dos três modelos finalistas.
@@ -112,12 +114,14 @@ Os resultados indicam que, embora todos apresentem alta acurácia, cada modelo s
    - O MLP é o mais poderoso na detecção de padrões complexos, alcançando o melhor F1 médio.ame
   
 Entre os três modelos de destaque, o Support Vector Machine (SVM) foi selecionado como o modelo de referência principal para a etapa de deploy.
-A escolha se baseou em três pilares técnicos:
+A escolha se baseou em Quatro pilares técnicos:
 
-   - Estabilidade — apresentou menor variação entre as dobras da validação cruzada.
+   - Estabilidade, apresentou menor variação entre as dobras da validação cruzada.
    - Equilíbrio entre recall e acurácia, reduzindo o risco de falsos negativos sem comprometer o desempenho global.
    - Generalização sólida, mantendo resultados consistentes mesmo com ajustes mínimos nos hiperparâmetros.
-   - Embora o MLP tenha alcançado métricas próximas ou até superiores em alguns aspectos, o SVM se mostrou mais previsível e estável, características ideais para uso clínico ou em pipelines de produção.
+   - Menor erro ao classificar Falso Negativo (Maligno como benigno) e Verdadeiro Negativo (Benigno como Maligno)
+
+Embora o MLP tenha alcançado métricas próximas ou até superiores em alguns aspectos, o SVM se mostrou mais previsível e estável, características ideais para uso clínico ou em pipelines de produção.
    
 
 ---
@@ -131,10 +135,10 @@ git clone https://github.com/Rd-Brito13/Classificacao-do-cancer-de-mama.git
 cd Classificacao-do-cancer-de-mama
 
 2. Executar Setup.bat:
-Executar o Setup.bat para criar e inicar o ambiente (criando a pasta env), inicar, instalar os requeriments, criar o kernel Phyton (Cancer-ML)
+Executar o Setup.bat para criar e inicar o ambiente (criando a pasta env), inicar, instalar os requeriments, criar o kernel Phyton (Cancer de Mama)
 
 3. Selecionar o Kernel no jupyter
-Kernel -> Change Kernel -> Python (Cancer-ML)
+Kernel -> Change Kernel -> Python (Cancer de Mam)
 
 4. Execute o notebook
 -Abra o notebook notebooks/Classificador.ipynb no Jupyter Notebook
@@ -149,4 +153,4 @@ Kernel -> Change Kernel -> Python (Cancer-ML)
 
 ---
 
-⭐ **Se este projeto foi útil, não esqueça de deixar uma estrela no repositório!**
+⭐ **Se este projeto foi interessante, não esqueça de deixar uma estrela no repositório!**
