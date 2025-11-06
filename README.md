@@ -1,14 +1,20 @@
 
-# Projeto: Classificação do Câncer de Mama
+# Classificação do Câncer de Mama
 
-Este projeto utiliza **Machine Learning** e **Rede Neural MLP (Multi-Layer Perceptron)** para prever se um tumor é maligno ou benigno, baseado no dataset público do [Kaggle](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data).
+Este projeto aplica **técnicas de Machine Learning** e **Redes Neurais Artificiais (MLP)** para prever se um tumor é **maligno** ou **benigno**, utilizando o dataset público *Breast Cancer Wisconsin (Diagnostic)* disponível no Kaggle: https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
+
+O objetivo é oferecer uma solução que **apoie o diagnóstico precoce** do câncer de mama, fornecendo insights rápidos e precisos a partir de variáveis obtidas em exames clínicos.
 
 ---
 
-## Objetivo do projeto
+## Objetivo do Projeto
+Desenvolver **modelos preditivos de alta precisão** capazes de:
+- Apoiar a **tomada de decisão médica**.
+- Minimizar **falsos negativos** (malignos classificados como benignos).
+- Demonstrar o uso prático de diferentes algoritmos supervisionados de classificação.
 
-Desenvolver modelos preditivos capazes de auxiliar na detecção precoce do câncer de mama, apoiando a tomada de decisão médica, a partir de variáveis numéricas obtidas por exames clínicos.
 ---
+
 
 ## Estrutura do repositório
 
@@ -21,71 +27,98 @@ Classificacao-do-cancer-de-mama/
 │  └─ processed/ <- dados_cancer_tratado.csv
 
 ├─ notebooks/
-│  └─ Classificador.ipynb <- Análise, tratamento e modelagem
 
-├─ models/ <- MLP.pkl, Regressao_Logistica.pkl, SVM.pkl
+│  └─ Classificador.ipynb <- <- Análise, tratamento e modelagem dos dados
 
-├─ requirements/ <- requirements.txt com dependências do projeto
+├─ models/ <- Modelos treinados (MLP.pkl, SVM.pkl, LG.pkl)
 
-├─ Setup.bat <- Script para configurar ambiente, instalar os requeriments e criar um kernel para utilizar o jupyter já com os requeriments instalados
+├─ requirements/ <- Dependências do projeto
 
+│ └─ requirements.txt
+
+├─ Setup.bat <- Script de configuração automática do ambiente
+│
 └─ README.md <- Documentação do projeto
 
 ---
 
 ## Dataset
 
-- **Fonte**: Kaggle - Breast Cancer Wisconsin (Diagnostic) Data Set  
-- **Número de instâncias**: 569  
-- **Número de features**: 30 variáveis extraídas de imagens digitalizadas de tumores  
-- **Target**:
-  - 1 - Benigno
-  - 0 - Maligno
+**Fonte:** [Kaggle - Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data)
+
+- **Instâncias:** 569  
+- **Features:** 30 variáveis numéricas extraídas de imagens digitalizadas de tumores  
+- **Target:**  
+  - `0` → Benigno  
+  - `1` → Maligno  
+
 
 ---
 
-## Pipeline do projeto
+# Pipeline do Projeto
 
-1. **Importação dos dados**  
-   - Carregamento do dataset (CSV do Kaggle)  
+### Importação e Tratamento dos Dados
+- Leitura da base de dados original (.csv)  
+- Análise exploratória: distribuição das variáveis, valores ausentes, frequência das classes e detecção de outliers  
+- Codificação (`LabelEncoder`) do target  
+- Escalonamento e padronização das features numéricas  
+- Separação de treino e teste **antes** do pré-processamento para evitar *data leakage*  
 
-2. **Exploração e tratamento dos dados**  
-   - Análise exploratória (distribuição das variáveis, valores ausentes, frequência das classes, análise gráfica dos dados, outliers)  
-   - Encoding (LabelEncoder) para o target  
-   - Escalonamento/Padronização das features  
-   - Separação de treino e teste antes do pré-processamento (evitar vazamento de dados)  
+### Modelagem e Treinamento
+Modelos testados:
+- Naive Bayes
+- Decision Tree Classifier  
+- Random Forest  
+- XGBoost / LightGBM / CatBoost
+- KNN
+- Logistic Regression  
+- Multi-Layer Perceptron (MLPClassifier)  
+- Support Vector Machine (SVC)  
 
-3. **Modelagem**  
-   - Modelos testados:
-     - Árvore de decisão
-     - Random Forest
-     - XGBoost, LightGBM, CatBoost
-     - Rede Neural MLPClassifier
-   - Ajuste de hiperparâmetros com GridSearchCV  
+### Otimização e Validação
+- Ajuste de hiperparâmetros utilizando: `GridSearchCV - RandomizedSearchCV`, a busca foi otimizada utilizando a variavel `recall_maligno`, visando trazer o melhor recall para o falso negativo (malignos classificados como benignos)
+- Validação cruzada (`cross_validate - kfold`)  
+- Métricas de desempenho:
+  - **Accuracy Global**
+  - **Precision médio (Falso Negativo)**
+  - **Recall Médio (Falso Negativo)**
+  - **F1-Score Médio (Falso Negativo)**
+  - **ROC-AUC Global**
+  - **Matriz de Confusão Interativa (Plotly)**
+  - 
+### Simulação de deploy
 
-4. **Validação**  
-   - Separação treino/teste  
-   - Cross-validation para estimativa de performance  
-   - Métricas de desempenho: **Accuracy, Precision, Recall, F1-score, ROC-AUC, Confusion Matrix**  
+A simulação de deploy foi planejada para testar a aplicação prática dos três modelos finalistas.
+O processo envolveu:
 
-5. **Salvar Modelos**  
-   - Modelos finais salvos em `models/` (MLP.pkl, Regressão Logística.pkl, SVM.pkl)  
-
-6. **Simulação de deploy**  
-   - Carregamento do modelo salvo e realização de previsões em novos dados  
+   - Carregamento dos modelos treinados (.pkl) diretamente do diretório notebooks/
+   - Replicação do pipeline de pré-processamento, garantindo consistência no escalonamento e codificaçã
+   - importa os 3 arquivos
+   - Entrada de novos dados simulados representando pacientes com características clínicas reais (no formato de dataframe)
+   - Predição automática (Benigno/Maligno) e exibição das probabilidades associadas
 
 ---
 
-## Resultados
+### Comparativo de Desempenho — Modelos de Destaque
 
-- Melhor modelo: **Máquina de Vetores de Suporte (SVM)** com features escalonadas  
-- Principais métricas:
-  - Accuracy: **98,25%**
-  - Precision: **98%**
-  - Recall: **99%**
-  - F1-score: **99%**
-  - Confusion Matrix: **168 acertos**
-  - Validação cruzada: **97,54%**
+   - Suport Vector Machines (SVC): Acurácia Global: 97.66%, Recall Médio (Maligno): 96.83%, Excelente separação entre classes após escalonamento. Indicado para máxima taxa de acertos globais.
+   - Logistic Regression (LG) AUC-ROC Global: 99.67%, Recall (Maligno): 96.67%, Simples, interpretável e estável. Desempenho comparável a modelos complexos.
+   - Multi-Layer Perceptron (MLP), AUC-ROC Global: 99.72%, F1-Score Médio (Maligno): 96.18%, Precision Médio (Maligno): 96.85%, Modelo mais expressivo nas métricas médias. Ótimo equilíbrio entre precisão e sensibilidade.
+
+Os resultados indicam que, embora todos apresentem alta acurácia, cada modelo se sobressai em um aspecto específico:
+
+   - O SVM é o mais confiável em termos de acertos globais.
+   - A Regressão Logística é a opção mais interpretável e estável.
+   - O MLP é o mais poderoso na detecção de padrões complexos, alcançando o melhor F1 médio.ame
+  
+Entre os três modelos de destaque, o Support Vector Machine (SVM) foi selecionado como o modelo de referência principal para a etapa de deploy.
+A escolha se baseou em três pilares técnicos:
+
+   - Estabilidade — apresentou menor variação entre as dobras da validação cruzada.
+   - Equilíbrio entre recall e acurácia, reduzindo o risco de falsos negativos sem comprometer o desempenho global.
+   - Generalização sólida, mantendo resultados consistentes mesmo com ajustes mínimos nos hiperparâmetros.
+   - Embora o MLP tenha alcançado métricas próximas ou até superiores em alguns aspectos, o SVM se mostrou mais previsível e estável, características ideais para uso clínico ou em pipelines de produção.
+   
 
 ---
 
