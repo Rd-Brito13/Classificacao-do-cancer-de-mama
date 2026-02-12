@@ -1,5 +1,5 @@
 
-# Classificação do Câncer de Mama
+# Breast Cancer Classification with Recall Oriented Model Selection
 
 Este projeto aplica **técnicas de Machine Learning** e **Redes Neurais Artificiais (MLP)** para prever se um tumor é **maligno** ou **benigno**, utilizando o dataset público *Breast Cancer Wisconsin (Diagnostic)* disponível no Kaggle: https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
 
