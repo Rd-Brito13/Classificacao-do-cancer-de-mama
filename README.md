@@ -150,7 +150,7 @@ Kernel -> Change Kernel -> Python (Cancer de Mam)
 
 **Rodrigo Brito**  
 📧 [rd.brito13@gmail.com](mailto:rd.brito13@gmail.com)  
-💼 [LinkedIn](https://www.linkedin.com/in/rd-brito13)
+💼 [LinkedIn](https://www.linkedin.com/in/rodrigo-brito-a4393a277/)
 
 ---
 
