@@ -132,7 +132,7 @@ Obs: Ao utilizar o google colab para executar o projeto, certificar de instalar 
 1. Clone este repositório:
 
 ```bash
-git clone https://github.com/Rd-Brito13/Classificacao-do-cancer-de-mama.git
+git clone https://github.com/Rd-Brito13/Breast-Cancer-Classification-with-Recall-Oriented-Model-Selection.git
 cd Classificacao-do-cancer-de-mama
 
 2. Executar Setup.bat:
